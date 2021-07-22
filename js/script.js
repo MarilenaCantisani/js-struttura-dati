@@ -49,7 +49,17 @@ console.log(cardMagic);
 // Verify the presence of the property "subtype"
 let subtype = cardMagic.subtypeCard ? `- ${cardMagic.subtypeCard}` : "";
 
-//TODO: Verify the presence of "skills"!!
+// Verify the presence of "skills"
+let skillContent = "No skill";
+if (cardMagic.skills.length) {
+    skillContent = "<ul>";
+    for (let i = 0; i < cardMagic.skills.length; i++) {
+        const currentSkills = cardMagic.skills[i];
+        skillContent += `<li><strong>Casting Cost:</strong> ${currentSkills.castingCost.join(".")}</li>`;
+        skillContent += `<li><strong>Description:</strong> ${currentSkills.description}</li>`;
+    };
+    skillContent += "</ul>";
+};
 
 
 /* ------------------------------ PRINT IN HTML ----------------------------- */
@@ -66,14 +76,7 @@ let cardTemplate = `
             <li><strong>Color Rarity:</strong> ${cardMagic.symbolOfExpansion.colorRarity} </li>
         </ul>
     </li>
-    <li><strong>Skills:</strong> 
-        <ul>  
-            <li><strong>Casting Cost:</strong> ${cardMagic.skills[0].castingCost.join(".")} </li>   
-            <li><strong>Description:</strong> ${cardMagic.skills[0].description} </li>
-            <li><strong>Casting Cost:</strong> ${cardMagic.skills[1].castingCost.join(".")} </li>
-            <li><strong>Description:</strong> ${cardMagic.skills[1].description} </li>
-        </ul>
-    </li>
+    <li><strong>Skills:</strong> ${skillContent} </li>
     <li><strong>Flavor Text:</strong> "${cardMagic.flavorText.quote}" - <em>${cardMagic.flavorText.author}</em></li>
     <li><strong>Number Of Collection:</strong> ${cardMagic.numberOfCollection}</li>
     <li><strong>Strength:</strong> ${cardMagic.strength}</li>
