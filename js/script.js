@@ -65,24 +65,24 @@ if (cardMagic.skills.length) {
 /* ------------------------------ PRINT IN HTML ----------------------------- */
 let cardTemplate = `
 <ul class = "card-magic">
-    <li><strong>ID Card:</strong> ${cardMagic.idCard} </li>
-    <li><strong>Name:</strong> ${cardMagic.name} </li>
+<li><strong>ID Card:</strong> ${cardMagic.idCard} </li>
+<li><strong>Name:</strong> ${cardMagic.name} </li>
     <li><strong>Casting Cost:</strong> ${cardMagic.castingCost.join(".")} </li>
     <li><strong>Type Card:</strong> ${cardMagic.typeCard} ${subtype} </li>
-    <li><strong>Expansion:</strong> 
+    <li id = "expansion"><strong>Expansion:</strong> 
         <ul>
             <li><strong>Reprint Id:</strong> ${cardMagic.symbolOfExpansion.reprintId} </li>
             <li><strong>Expansion Name:</strong> ${cardMagic.symbolOfExpansion.name} </li>
             <li><strong>Color Rarity:</strong> ${cardMagic.symbolOfExpansion.colorRarity} </li>
         </ul>
     </li>
-    <li><strong>Skills:</strong> ${skillContent} </li>
+    <li id = "skills"><strong>Skills:</strong> ${skillContent} </li>
     <li><strong>Flavor Text:</strong> "${cardMagic.flavorText.quote}" - <em>${cardMagic.flavorText.author}</em></li>
     <li><strong>Number Of Collection:</strong> ${cardMagic.numberOfCollection}</li>
     <li><strong>Strength:</strong> ${cardMagic.strength}</li>
     <li><strong>Constitution:</strong> ${cardMagic.constitution}</li>
     <li><strong>Border Card Color:</strong> ${cardMagic.borderCardColor}</li>
-    <li><strong>Illustration:</strong> 
+    <li id = "illustration"><strong>Illustration:</strong> 
         <ul>  
             <li><strong>Author:</strong> <em>${cardMagic.illustration.author.name}</em></li>   
             <li><strong>Image:</strong> ${cardMagic.illustration.imageSource} </li>
@@ -92,3 +92,4 @@ let cardTemplate = `
 `;
 
 cardElement.innerHTML = cardTemplate;
+
