@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 
 //* Link variable to an html id element: 
-const cardElement = document.getElementById("card");
+const cardSection = document.getElementById("card");
 
 //* Create a deck of cards: 
 const fullDeckCards = [
@@ -85,16 +85,7 @@ const fullDeckCards = [
             name: "Jump Start",
             colorRarity: "golden"
         },
-        skills: [
-            {
-                castingCost: ["R", "T"],
-                description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dolores, quisquam esse impedit ex suscipit eos quidem nobis hic quis cupiditate et est provident eum fugit repellat veniam praesentium ipsum."
-            },
-            {
-                castingCost: ["W", "B", "T"],
-                description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dolores, quisquam esse impedit ex suscipit eos quidem nobis hic quis cupiditate et est provident eum fugit repellat veniam praesentium ipsum."
-            }
-        ],
+        skills: [],
         flavorText: {
             quote: "Unable to settle on just on design, Urza decided to create one versatile being",
             author: "Illus, Amy Weber"
@@ -116,7 +107,8 @@ const fullDeckCards = [
 
 
 
-/* ------------------------------ PRINT IN HTML ----------------------------- */
+/* ------------------------------ FUNCTION ----------------------------- */
+//** Function that creates the card template
 const createCardTemplate = cardMagic => {
 
     /* --------------------------------- CHECKS --------------------------------- */
@@ -124,7 +116,7 @@ const createCardTemplate = cardMagic => {
     let subtype = cardMagic.subtypeCard ? `- ${cardMagic.subtypeCard}` : "";
 
     // Verify the presence of "skills"
-    let skillContent = "No skill";
+    let skillContent = `No skill`;
     if (cardMagic.skills.length) {
         skillContent = "<ul>";
         for (let i = 0; i < cardMagic.skills.length; i++) {
@@ -166,12 +158,19 @@ const createCardTemplate = cardMagic => {
     return cardTemplate;
 };
 
-
-let deckCardsTemplate = "";
-for (let i = 0; i < fullDeckCards.length; i++) {
-    const currentCard = fullDeckCards[i];
-    deckCardsTemplate += createCardTemplate(currentCard);
+//** Function that prepares the page printing
+const printFullDeck = (deck, cardElement) => {
+    let deckCardsTemplate = "";
+    for (let i = 0; i < deck.length; i++) {
+        const currentCard = deck[i];
+        deckCardsTemplate += createCardTemplate(currentCard);
+    }
+    cardElement.innerHTML = deckCardsTemplate;
 }
 
-cardElement.innerHTML = deckCardsTemplate;
+/* ------------------------------ PRINT IN HTML ----------------------------- */
+printFullDeck(fullDeckCards, cardSection);
+
+
+
 
