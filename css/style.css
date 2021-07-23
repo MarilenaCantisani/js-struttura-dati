@@ -15,3 +15,7 @@
 .card-magic ul li img{
     height: 30vh;
 }
+
+.hidden {
+    display: none;
+}

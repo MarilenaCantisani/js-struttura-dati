@@ -106,9 +106,8 @@ const fullDeckCards = [
 
 
 
-
 /* ------------------------------ FUNCTION ----------------------------- */
-//** Function that creates the card template
+//** Function that creates the card template:
 const createCardTemplate = cardMagic => {
 
     /* --------------------------------- CHECKS --------------------------------- */
@@ -158,7 +157,7 @@ const createCardTemplate = cardMagic => {
     return cardTemplate;
 };
 
-//** Function that prepares the page printing
+//** Function that prepares the page printing:
 const printFullDeck = (deck, cardElement) => {
     let deckCardsTemplate = "";
     for (let i = 0; i < deck.length; i++) {
@@ -172,5 +171,52 @@ const printFullDeck = (deck, cardElement) => {
 printFullDeck(fullDeckCards, cardSection);
 
 
+/* ----------------------------- FILTER SECTION ----------------------------- */
+const inputTextElement = document.getElementById("search-bar");
+const selectPropertyElement = document.getElementById("property-filter");
+const buttonElement = document.getElementById("button-search");
 
+//* Check the selected property and change the visibility of the text input box: 
+selectPropertyElement.addEventListener("change", () => {
+    const currentValue = selectPropertyElement.value;
+    if (currentValue !== "all") {
+        inputTextElement.classList.remove("hidden");
+    } else {
+        inputTextElement.classList.add("hidden");
+    }
+});
+
+//* Check what to print on page:
+buttonElement.addEventListener("click", () => {
+    const inputTextValue = inputTextElement.value;
+    const selectPropertyValue = selectPropertyElement.value;
+
+    //Check if the value of the "selected" is "all"
+    if (selectPropertyValue == "all") {
+        printFullDeck(fullDeckCards, cardSection);
+        return;
+    };
+    //Verify which property has been selected and filter
+    const filteredDeckCards = [];
+    for (let i = 0; i < fullDeckCards.length; i++) {
+        const currentCard = fullDeckCards[i];
+
+
+        switch (selectPropertyValue) {
+            case "idCard":
+            case "strength":
+            case "constitution":
+                if (currentCard[selectPropertyValue] === parseInt(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+                break;
+
+            default:
+                if (currentCard[selectPropertyValue].includes(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+        }
+    };
+    printFullDeck(filteredDeckCards, cardSection);
+});
 
