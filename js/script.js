@@ -201,7 +201,6 @@ buttonElement.addEventListener("click", () => {
     for (let i = 0; i < fullDeckCards.length; i++) {
         const currentCard = fullDeckCards[i];
 
-
         switch (selectPropertyValue) {
             // Properties with numerical value:
             case "idCard":
@@ -212,7 +211,7 @@ buttonElement.addEventListener("click", () => {
                 }
                 break;
 
-            //Property Symbol Of Expansion:
+            //Property "Symbol Of Expansion":
             case "symbolOfExpansion-name":
                 if (currentCard.symbolOfExpansion.name.includes(inputTextValue)) {
                     filteredDeckCards.push(currentCard);
@@ -224,7 +223,7 @@ buttonElement.addEventListener("click", () => {
                 }
                 break;
 
-            //Property Flavor Text:
+            //Property "Flavor Text":
             case "flavorText-quote":
                 if (currentCard.flavorText.quote.includes(inputTextValue)) {
                     filteredDeckCards.push(currentCard);
@@ -236,21 +235,22 @@ buttonElement.addEventListener("click", () => {
                 }
                 break;
 
-            //Property illustration:
+            //Property "Illustration":
             case "illustration-author-name":
                 if (currentCard.illustration.author.name.includes(inputTextValue)) {
                     filteredDeckCards.push(currentCard);
                 }
                 break;
 
-            //Property Skills:
-            case "skills-castingCost":
+            //TODO: Property "Skills":
+            /* case "skills-castingCost":
                 for (let i = 0; i < currentCard.skills.length; i++) {
                     if (currentCard.skills[0].castingCost.includes(inputTextValue)) {
                         filteredDeckCards.push(currentCard);
                     }
                 }
-                break;
+                break;*/
+
             // Properties with string value or string array:
             default:
                 if (currentCard[selectPropertyValue].includes(inputTextValue)) {
