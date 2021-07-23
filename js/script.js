@@ -46,7 +46,7 @@ const fullDeckCards = [
     {
         idCard: 2,
         name: "Rimbalzo Selvaggio",
-        castingCost: ["2", "R", "R"],
+        castingCost: ["2", "G", "R"],
         typeCard: "Istantaneo",
         symbolOfExpansion: {
             reprintId: 9,
@@ -77,7 +77,7 @@ const fullDeckCards = [
     {
         idCard: 3,
         name: "Urza's Avenger",
-        castingCost: ["6", "R", "R"],
+        castingCost: ["4", "R", "B"],
         typeCard: "Artifact Creature",
         subtypeCard: "Giant",
         symbolOfExpansion: {
