@@ -10,6 +10,24 @@
 </head>
 
 <body>
+    <!--* Property list to filter  *-->
+    <select id="property-filter">
+        <option value="all">Tutte</option>
+        <option value="id">ID</option>
+        <option value="name">Nome</option>
+        <option value="typeCard">Tipo di carta</option>
+        <option value="subtypeCard">Sottotipo</option>
+        <option value="numberOfCollection">Numero collezione</option>
+        <option value="strength">Forza</option>
+        <option value="constitution">Costituzione</option>
+        <option value="borderCardColor">Colore bordo carta</option>
+    </select>
+
+    <!--* Search bar  *-->
+    <input id="search-bar" type="text" placeholder="Cosa vuoi cercare?">
+
+    <!--* Search button  *-->
+    <button id="button-search">Cerca</button>
 
     <section id="card"></section>
     <script src="./js/script.js"></script>
