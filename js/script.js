@@ -55,8 +55,8 @@ const fullDeckCards = [
         },
         skills: [
             {
-                castingCost: ["R", "T"],
-                description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque dolores, quisquam esse impedit ex suscipit eos quidem nobis hic quis cupiditate et est provident eum fugit repellat veniam praesentium ipsum."
+                castingCost: ["R", "G"],
+                description: "The creature cannot be blocked"
             }
         ],
         flavorText: {
@@ -108,7 +108,7 @@ const fullDeckCards = [
 
 /* ------------------------------ FUNCTION ----------------------------- */
 //** Function that creates the card template:
-const createCardTemplate = cardMagic => {
+const createCardTemplate = (cardMagic) => {
 
     /* --------------------------------- CHECKS --------------------------------- */
     // Verify the presence of the property "subtype"
@@ -243,6 +243,14 @@ buttonElement.addEventListener("click", () => {
                 }
                 break;
 
+            //Property Skills:
+            case "skills-castingCost":
+                for (let i = 0; i < currentCard.skills.length; i++) {
+                    if (currentCard.skills[0].castingCost.includes(inputTextValue)) {
+                        filteredDeckCards.push(currentCard);
+                    }
+                }
+                break;
             // Properties with string value or string array:
             default:
                 if (currentCard[selectPropertyValue].includes(inputTextValue)) {
