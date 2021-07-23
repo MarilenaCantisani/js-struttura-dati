@@ -50,8 +50,8 @@ const fullDeckCards = [
         typeCard: "Istantaneo",
         symbolOfExpansion: {
             reprintId: 9,
-            name: "Jump Start",
-            colorRarity: "golden"
+            name: "Orizzonti di modern",
+            colorRarity: "black"
         },
         skills: [
             {
@@ -82,8 +82,8 @@ const fullDeckCards = [
         subtypeCard: "Giant",
         symbolOfExpansion: {
             reprintId: 9,
-            name: "Jump Start",
-            colorRarity: "golden"
+            name: "Spirale temporale Remastered",
+            colorRarity: "silver"
         },
         skills: [],
         flavorText: {
@@ -203,6 +203,7 @@ buttonElement.addEventListener("click", () => {
 
 
         switch (selectPropertyValue) {
+            // Properties with numerical value:
             case "idCard":
             case "strength":
             case "constitution":
@@ -211,10 +212,43 @@ buttonElement.addEventListener("click", () => {
                 }
                 break;
 
+            //Property Symbol Of Expansion:
+            case "symbolOfExpansion-name":
+                if (currentCard.symbolOfExpansion.name.includes(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+                break;
+            case "symbolOfExpansion-colorRarity":
+                if (currentCard.symbolOfExpansion.colorRarity.includes(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+                break;
+
+            //Property Flavor Text:
+            case "flavorText-quote":
+                if (currentCard.flavorText.quote.includes(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+                break;
+            case "flavorText-author":
+                if (currentCard.flavorText.author.includes(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+                break;
+
+            //Property illustration:
+            case "illustration-author-name":
+                if (currentCard.illustration.author.name.includes(inputTextValue)) {
+                    filteredDeckCards.push(currentCard);
+                }
+                break;
+
+            // Properties with string value or string array:
             default:
                 if (currentCard[selectPropertyValue].includes(inputTextValue)) {
                     filteredDeckCards.push(currentCard);
                 }
+                break;
         }
     };
     printFullDeck(filteredDeckCards, cardSection);
